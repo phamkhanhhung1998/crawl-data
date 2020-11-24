@@ -83,25 +83,25 @@ list_road = []
 list_floors = []
 list_dis = []
 
+if __name__ == "__main__":
 
-for i in range(1, 7): # lap tu 1 den 6
-    newUrl = url.format(pageNum=i)
-    parsedPage = get_page_content(newUrl)
-    price, square, road, floors, dis = process_parsed_content(parsedPage)
+    for i in range(1, 7): # lap tu 1 den 6
+        newUrl = url.format(pageNum=i)
+        parsedPage = get_page_content(newUrl)
+        price, square, road, floors, dis = process_parsed_content(parsedPage)
 
-    list_price.extend(price)
-    list_square.extend(square)
-    list_road.extend(road)
-    list_floors.extend(floors)
-    list_dis.extend(dis)
+        list_price.extend(price)
+        list_square.extend(square)
+        list_road.extend(road)
+        list_floors.extend(floors)
+        list_dis.extend(dis)
 
-dFrame = pd.DataFrame({
-    'Price': list_price,
-    'Dien Tich': list_square,
-    'Do Rong Mat Duong': list_road,
-    'So Tang': list_floors,
-    'Khoang Cach': list_dis
-})
+    dFrame = pd.DataFrame({
+        'Price': list_price,
+        'Dien Tich': list_square,
+        'Do Rong Mat Duong': list_road,
+        'So Tang': list_floors,
+        'Khoang Cach': list_dis
+    })
 
-dFrame.to_csv("Data.csv", encoding="utf-8", index=False)
-
+    dFrame.to_csv("Data.csv", encoding="utf-8", index=False)
